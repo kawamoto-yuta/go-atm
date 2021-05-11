@@ -1,19 +1,26 @@
 package model
 
 import (
+	"fmt"
+
 	"gorm.io/gorm"
 )
 
 type User struct {
 	gorm.Model
-	Name string `json:"name"`
-	Age  int    `json:"age"`
+	ID         string `json:"id"`
+	Name       string `json:"name"`
+	AccountNum string `json:"account_num"`
+	Password   string `json:"password"`
 }
 
-func NewUser(name string, age int) *User {
+func NewUser(id string, name string, account_num string, password string) *User {
 	return &User{
-		Name: name,
-		Age:  age}
+		ID:         id,
+		Name:       name,
+		AccountNum: account_num,
+		Password:   password,
+	}
 }
 
 func CreateUser(db *gorm.DB, user *User) (*User, error) {
@@ -25,11 +32,12 @@ func CreateUser(db *gorm.DB, user *User) (*User, error) {
 func GetUsers(db *gorm.DB) ([]*User, error) {
 	users := []*User{}
 	result := db.Find(&users)
+	fmt.Println("aa")
 
 	return users, result.Error
 }
 
-func GetUserById(db *gorm.DB, ID int) (*User, error) {
+func GetUserById(db *gorm.DB, ID string) (*User, error) {
 	user := User{}
 	result := db.First(&user, ID)
 

@@ -17,7 +17,7 @@ func main() {
 
 	// apiの疎通確認用
 	router.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Response OK")
+		c.String(http.StatusOK, "レスポンスOK")
 	})
 
 	// routing
