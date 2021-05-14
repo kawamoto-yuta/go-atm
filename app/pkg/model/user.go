@@ -1,8 +1,6 @@
 package model
 
 import (
-	"fmt"
-
 	"gorm.io/gorm"
 )
 
@@ -32,7 +30,6 @@ func CreateUser(db *gorm.DB, user *User) (*User, error) {
 func GetUsers(db *gorm.DB) ([]*User, error) {
 	users := []*User{}
 	result := db.Find(&users)
-	fmt.Println("aa")
 
 	return users, result.Error
 }

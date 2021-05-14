@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 
 	// "strconv"
@@ -58,16 +57,13 @@ func (self *UserController) CreateUser(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-
 	hash, err := bcrypt.GenerateFromPassword([]byte(param.Password), 4)
-	fmt.Println(string(hash))
 
 	newUser := model.NewUser(UserID, param.Name, param.AccountNum, string(hash))
-	fmt.Println(newUser)
+	// fmt.Println(newUser)
 	user, err := model.CreateUser(connecter.DB(), newUser)
 
 	if err != nil {
-		fmt.Println(err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "user create failed"})
 		return
 	}

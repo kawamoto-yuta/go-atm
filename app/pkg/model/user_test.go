@@ -8,7 +8,7 @@ import (
 )
 
 func TestCreateUser(t *testing.T) {
-	newUser := model.NewUser("test_user", 30)
+	newUser := model.NewUser("1", "test_user", "303030", "1455")
 	user, _ := model.CreateUser(connecter.DB(), newUser)
 
 	if user.Name != "test_user" {
