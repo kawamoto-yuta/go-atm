@@ -15,6 +15,7 @@ import (
 type BalanceController struct{}
 
 // 変更
+// 変更2
 
 func (self *DepositController) CreateBalance(c *gin.Context) {
 	// uuidObj, _ := uuid.NewUUID()
