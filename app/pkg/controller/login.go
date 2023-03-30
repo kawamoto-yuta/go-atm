@@ -62,3 +62,5 @@ func (self *LoginController) LoginPost(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"結果": "AccountNumが違います"})
 }
+// 追加メッセージ
+// 追加メッセージ2
